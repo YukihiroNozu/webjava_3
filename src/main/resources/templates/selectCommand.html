@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>コマンド選択</title>
+<link rel="stylesheet" href="RPGApp.css">
+</head>
+<body>
+	<div>コマンド選択</div>
+	<p>
+		職業：
+		<output th:text="${CharacterParameter.getJob()}"></output>
+	</p>
+	<p>
+		名前：
+		<output th:text="${CharacterParameter.getName()}"></output>
+	</p>
+	<form method="POST" action="/session2"
+		th:object="${CharacterParameter}">
+		<p>
+			<input type="submit" value="戦う">
+		</p>
+	</form>
+</body>
+</html>

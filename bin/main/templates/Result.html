@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>result</title>
+<link rel="stylesheet" href="RPGApp.css">
+</head>
+<body>
+	<div>result</div>
+	<p>
+		メッセージ：
+		<output th:text="${CharacterParameter.getName()}"></output>
+		<output th:text="${CharacterParameter.getMessage()}"></output>
+	</p>
+	<form method="POST" action="/CreateCharacter">
+		<p>
+			<input type="submit" value="もう一度">
+		</p>
+	</form>
+</body>
+</html>
