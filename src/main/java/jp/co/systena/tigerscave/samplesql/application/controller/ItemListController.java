@@ -135,7 +135,7 @@ public class ItemListController {
           //1行分の値をデータベースにINSERTする
           //SQL文字列中の「?」の部分に、後ろで指定した変数が埋め込まれる
           int insertCount = jdbcTemplate.update(
-                "INSERT INTO items VALUES( ?, ?, ? )",
+                "INSERT INTO items VALUES( ?, ?, ?, ? )",
                 Integer.parseInt(form.getId()),
                 form.getName(),
                 form.getJob(),
