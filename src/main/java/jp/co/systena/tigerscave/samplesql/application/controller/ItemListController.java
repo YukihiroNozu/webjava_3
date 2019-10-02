@@ -138,8 +138,8 @@ public class ItemListController {
                 "INSERT INTO items VALUES( ?, ?, ?, ? )",
                 Integer.parseInt(form.getId()),
                 form.getName(),
-                form.getJob(),
-                Integer.parseInt(form.getHp())
+                Integer.parseInt(form.getHp()),
+                form.getJob()
               );
 
     }
