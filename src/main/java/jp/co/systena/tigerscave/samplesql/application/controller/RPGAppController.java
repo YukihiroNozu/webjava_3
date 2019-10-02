@@ -33,18 +33,6 @@ public class RPGAppController {
     return "CreateCharacter";
   }
 
-//  @RequestMapping(value = "/selectCharacter", method = RequestMethod.GET) // URLとのマッピング
-//  public ModelAndView index(ModelAndView mav, @Valid characterListForm character,
-//      @RequestParam(name = "id", required = true) String id, BindingResult bindingResult, HttpServletRequest request) {
-//
-////    character characterParameter = JdbcTemplate.query("SELECT * FROM items WHERE id = 1", new BeanPropertyRowMapper<character>(character.class));
-//
-////    session.setAttribute("CharacterParameter", characterParameter);
-//    session.setAttribute("CharacterParameter", character);
-//
-//    return new ModelAndView("redirect:/dicideCharacter"); // リダイレクト
-//  }
-
   @RequestMapping(value = "/selectCharacter", method = RequestMethod.GET) // URLとのマッピング
   public String update(@RequestParam(name = "id", required = true) String id,
       @RequestParam(name = "name", required = true) String name,
@@ -116,12 +104,6 @@ public class RPGAppController {
   @RequestMapping(value = "/session2", method = RequestMethod.POST) // URLとのマッピング
   public ModelAndView index2(ModelAndView mav, @Valid CharacterParameter characterParameter,
       BindingResult bindingResult, HttpServletRequest request) {
-
-//    session.setAttribute("CharacterParameter", characterParameter);
-
-    // CharacterParameterService service = new CharacterParameterService();
-    // List<CharacterParameter> human = service.getCharacterParameter();
-    // mav.addObject("CharacterParameter", characterParameter);
 
     return new ModelAndView("redirect:/attack"); // リダイレクト
   }
