@@ -36,7 +36,7 @@
 						<input type="text" th:name="|characterList[${stat.index}].job|" th:value="${character.job}" />
 					</td>
 					<td>
-						<a href="" th:href="@{/selectCharacter}"  th:object="${characterListForm}">決定</a>
+						<a href="" th:href="@{/selectCharacter(id=${character.id}, name =${character.name}, hp =${character.hp}, job =${character.job})}">決定</a>
 					</td>
 					<td>
 						<a href="" th:href="@{/deleteCharacter(id=${character.id})}" >削除</a>

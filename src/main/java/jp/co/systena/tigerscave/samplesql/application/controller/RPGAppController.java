@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import jp.co.systena.tigerscave.samplesql.application.form.CharacterParameter;
 import jp.co.systena.tigerscave.samplesql.application.form.WarriorClass;
 import jp.co.systena.tigerscave.samplesql.application.form.WizardClass;
-import jp.co.systena.tigerscave.samplesql.application.model.characterListForm;
 
 @Controller // Viewあり。Viewを返却するアノテーション
 public class RPGAppController {
@@ -33,16 +33,35 @@ public class RPGAppController {
     return "CreateCharacter";
   }
 
+//  @RequestMapping(value = "/selectCharacter", method = RequestMethod.GET) // URLとのマッピング
+//  public ModelAndView index(ModelAndView mav, @Valid characterListForm character,
+//      @RequestParam(name = "id", required = true) String id, BindingResult bindingResult, HttpServletRequest request) {
+//
+////    character characterParameter = JdbcTemplate.query("SELECT * FROM items WHERE id = 1", new BeanPropertyRowMapper<character>(character.class));
+//
+////    session.setAttribute("CharacterParameter", characterParameter);
+//    session.setAttribute("CharacterParameter", character);
+//
+//    return new ModelAndView("redirect:/dicideCharacter"); // リダイレクト
+//  }
+
   @RequestMapping(value = "/selectCharacter", method = RequestMethod.GET) // URLとのマッピング
-  public ModelAndView index(ModelAndView mav, @Valid characterListForm character,
-      @RequestParam(name = "id", required = true) String id, BindingResult bindingResult, HttpServletRequest request) {
+  public String update(@RequestParam(name = "id", required = true) String id,
+      @RequestParam(name = "name", required = true) String name,
+      @RequestParam(name = "hp", required = true) int hp,
+      @RequestParam(name = "job", required = true) String job,
+      Model model) {
 
-//    character characterParameter = JdbcTemplate.query("SELECT * FROM items WHERE id = 1", new BeanPropertyRowMapper<character>(character.class));
+    CharacterParameter characterParameter = new CharacterParameter();
 
-//    session.setAttribute("CharacterParameter", characterParameter);
-    session.setAttribute("CharacterParameter", character);
+    characterParameter.setId(id);
+    characterParameter.setName(name);
+    characterParameter.setHp(hp);
+    characterParameter.setJob(job);
 
-    return new ModelAndView("redirect:/dicideCharacter"); // リダイレクト
+    session.setAttribute("CharacterParameter", characterParameter);
+
+    return "redirect:/dicideCharacter";
   }
 
 
